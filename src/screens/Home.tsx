@@ -21,7 +21,7 @@ export function Home(){
                 renderItem={({ item }) => (
                     <Group 
                         name={item} 
-                        isActive={groupSelected === item}
+                        isActive={groupSelected.toLocaleUpperCase() === item.toLocaleUpperCase()}
                         onPress={() => setGroupSelected(item)}
                     />
                 )}
@@ -32,7 +32,7 @@ export function Home(){
                 maxH={10}
             />
 
-            <VStack flex={1} px={8}>
+            <VStack flex={1} px={6}>
                 <HStack justifyContent='space-between' mb={5}>
                         <Heading color='gray.200' fontSize='md'>
                             Exercícios
