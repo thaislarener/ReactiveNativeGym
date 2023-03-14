@@ -4,8 +4,8 @@ import { View, StatusBar } from 'react-native';
 import { NativeBaseProvider } from 'native-base';
 
 import { Routes } from './src/routes';
-import { Home } from '@screens/Home';
 import { Loading } from '@components/Loading';
+
 
 export default function App() {
   const [fontsLoaded] = useFonts({ Roboto_400Regular, Roboto_700Bold });
