@@ -71,18 +71,26 @@ export function Profile(){
                 aspect: [4, 4],
                 allowsEditing: true
             });
-    
+            
             if(photoSelected.canceled)
                 return;
             
-            if(photoSelected.assets[0].uri){
+            if(photoSelected.assets[0].uri){ 
+                if(photoSelected.assets[0].fileSize && (photoSelected.assets[0].fileSize / 1024 / 1024) > 5){
+                    return toast.show({
+                        title: 'Essa imagem é muito grande. Escolha uma de até 5MB.',
+                    placement: 'top',
+                    bgColor: 'red.500'
+                    })
+                }
+
                 const fileExtension = photoSelected.assets[0].uri.split('.').pop();
                 const photoFile = {
                     name: `${user.name}.${fileExtension}`.toLowerCase(),
                     uri: photoSelected.assets[0].uri,
                     type: `${photoSelected.assets[0].type}/${fileExtension}`
                 } as any;
-                
+                console.log(photoFile);
                 const userPhotoUploadForm = new FormData();
                 userPhotoUploadForm.append('avatar', photoFile);
                 
